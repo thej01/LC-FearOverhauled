@@ -33,13 +33,14 @@ That is not there because I don't want this mod to be abused in public lobbies.
 Otherwise you can change everything else!
 
 # Hey, can I use Fear Overhauled in (blank)?
-**Yes!**
 
-You can do whatever you want with this mod! (as long as it's not paid for)
+FearOverhauled is licensed under GNU General Public License v3.0: https://choosealicense.com/licenses/gpl-3.0/#
 
-Include it in modpacks, include it in your mods, just do it!
-
-Just give me credit with a link back to the original mod page, that's all I ask for.
+Basically, do whatever you want, just:
+1. Disclose source
+2. License and copyright notice
+3. Same license
+4. State changes 
 
 # How can I help with Fear Overhauled?
 I am in need of localizers, currently the mod only supports these languages
