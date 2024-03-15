@@ -118,7 +118,7 @@ namespace FearOverhauled
 
             fearLogger.Log("Initialising LethalConfig items...");
 
-            ConfigBinds.lang = Config.Bind("Misc", "Language", Lang.AvailableLang.En, "Doesn't effect config");
+            ConfigBinds.lang = Config.Bind("Misc", "Language", Lang.AvailableLang.En, "Doesn't affect config");
 
             var langDropdown = new EnumDropDownConfigItem<Lang.AvailableLang>(ConfigBinds.lang, new EnumDropDownOptions
             {
@@ -288,7 +288,7 @@ namespace FearOverhauled
             {
                 case "scared":
                     return new ScaredProperties();
-                case "gorrified":
+                case "horrified":
                     return new HorrifiedProperties();
                 case "panicAttack":
                     return new PanicAttackProperties();
@@ -329,7 +329,9 @@ namespace FearOverhauled
         {
             public enum AvailableLang
             {
-                En
+                En,
+                De,
+                Rus
             }
 
             public static AvailableLang curLang = AvailableLang.En;
@@ -342,15 +344,33 @@ namespace FearOverhauled
 
             public class EN : ILangProperties
             {
-                public string panicAttackWarningMSG { get; } = "WARNING: High heartbeat detected. Find a place to rest ASAP. Your body can't take this.";
+                public string panicAttackWarningMSG { get; } = "WARNING: High heartbeat detected. Find a place to rest ASAP.";
                 public string panicAttackRecoveryMSG { get; } = "INFO: Heartrate slowing down to normal levels.";
+            }
+
+            public class DE : ILangProperties
+            {
+                public string panicAttackWarningMSG { get; } = "WARNUNG: Hoher Herzschlag wurde festgestellt. Suchen Sie sich jetzt einen Platz zum Ausruhen.";
+                public string panicAttackRecoveryMSG { get; } = "INFO: Die Herzfrequenz kehrt zur normalen Geschwindigkeit zurück.";
+            }
+
+            public class RUS : ILangProperties
+            {
+                public string panicAttackWarningMSG { get; } = "ПРЕДУПРЕЖДЕНИЕ: Обнаружено учащенное сердцебиение. Выздоравливайте скорее.";
+                public string panicAttackRecoveryMSG { get; } = "Информация: Пульс возвращается к нормальной скорости.";
             }
 
             public static ILangProperties GetLangClassFromEnum(AvailableLang langEnum = AvailableLang.En)
             {
-                EN lang;
+                ILangProperties lang;
                 switch (langEnum)
                 {
+                    case AvailableLang.De:
+                        lang = new DE();
+                        break;
+                    case AvailableLang.Rus:
+                        lang = new RUS();
+                        break;
                     default:
                         lang = new EN();
                         break;
